@@ -10,6 +10,10 @@ RUN rpm --rebuilddb && yum install -y install wget tar && yum clean all \
     && mv /etc/dsc-cassandra-${CASSANDRA_VERSION} /etc/cassandra 
 RUN alternatives --install /usr/bin/java java /opt/jre1.8.0_45/bin/java 1
 
+RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 \
+    && mv jq-linux64 /usr/bin/jq \
+    && chmod +x /usr/bin/jq
+
 ENV PATH /etc/cassandra/bin:$PATH
 WORKDIR /etc/cassandra    
 

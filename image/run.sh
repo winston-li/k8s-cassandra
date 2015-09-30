@@ -15,6 +15,13 @@
 # limitations under the License.
 
 sed -i  "s/%%ip%%/$(hostname -i)/g" /etc/cassandra/conf/cassandra.yaml
-# workaround for endpoints not available to query via apiserver right after pod creation 
-sleep 10
+# endpoints of a k8s service may be unavailable to query via apiserver right after pod creation. 
+# wait until service's endpoint ready  
+KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+while [ $(curl -k https://${KUBERNETES_SERVICE_HOST}/api/v1/namespaces/${POD_NAMESPACE}/endpoints/cassandra -H "Authorization: Bearer ${KUBE_TOKEN}" | jq -r '.subsets[0].addresses[0].ip == null') == true ]; do
+  echo "Endpoint of Cassandra Service is not ready..."
+  sleep 2
+done
+echo "Endpoint(s) of Cassandra Service have been ready!" 
+
 bin/cassandra -f
