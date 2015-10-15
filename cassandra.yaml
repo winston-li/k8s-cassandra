@@ -36,9 +36,9 @@ items:
         - name: cassandra
           image: quay.io/draft/k8s-cassandra:2.1.8_v1.0
           resources:
-            limits:
-              cpu: 2
-              memory: 4Gi 
+            requests:
+              cpu: 4
+              memory: 8Gi
           env:
           - name: MAX_HEAP_SIZE
             value: 1024M
