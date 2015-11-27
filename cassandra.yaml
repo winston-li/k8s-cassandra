@@ -34,7 +34,7 @@ items:
       spec:
         containers:
         - name: cassandra
-          image: quay.io/draft/k8s-cassandra:2.1.8_v1.0
+          image: quay.io/draft/k8s-cassandra:2.1.8_v1.1
           resources:
             requests:
               cpu: 4

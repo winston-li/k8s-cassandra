@@ -20,6 +20,6 @@
 
 -----
 ##### TODO:
-* Kubernetes 1.0.x doesn't support emptyDir volumes for containers running as non-root (it's commit in master branch, not v1.0.0 branch, refer to https://github.com/kubernetes/kubernetes/pull/9384 & https://github.com/kubernetes/kubernetes/issues/12627). Use root rather than cassandra user instead at this moment.
-* Endpoints not available to query via apiserver right after pod creation, workaround it by delay 10 seconds to start cassandra program at this moment.
+* ~~Kubernetes 1.0.x doesn't support emptyDir volumes for containers running as non-root (it's commit in master branch, not v1.0.0 branch, refer to https://github.com/kubernetes/kubernetes/pull/9384 & https://github.com/kubernetes/kubernetes/issues/12627). Use root rather than cassandra user instead at this moment.~~ (Done: It's verified OK in kubernetes 1.1.1 in using cassandra user instead of root)
+* ~~Endpoints not available to query via apiserver right after pod creation, workaround it by delay 10 seconds to start cassandra program at this moment.~~ (Done: Repeatedly polling until service's endpoint ready in run.sh)
 * Is OpsCenter workable in k8s?

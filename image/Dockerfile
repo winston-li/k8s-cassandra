@@ -32,7 +32,6 @@ RUN chmod a+x ./bin/run.sh && \
 
 VOLUME ["/cassandra_data/data","/cassandra_data/commitlog","/cassandra_data/saved_caches","/cassandra_data/log"]    
 
-# Comment below out due to Kubernetes v1.0.x doesn't support emptyDir volumes for containers running as non-root
-#USER cassandra
+USER cassandra
 
 CMD ["/etc/cassandra/bin/run.sh"]
