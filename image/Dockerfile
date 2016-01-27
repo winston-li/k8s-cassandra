@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 
 ENV CASSANDRA_VERSION 2.1.8
 EXPOSE 9042 9160
@@ -31,6 +31,8 @@ RUN chmod a+x ./bin/run.sh && \
     chmod o+w -R /etc/cassandra /cassandra_data
 
 VOLUME ["/cassandra_data/data","/cassandra_data/commitlog","/cassandra_data/saved_caches","/cassandra_data/log"]    
+
+RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 
 USER cassandra
 
