@@ -1,4 +1,6 @@
 # k8s-cassandra: cassandra cluster of DRAFT on Kubernetes
+[![Docker Repository on Quay](https://quay.io/repository/draft/k8s-cassandra/status "Docker Repository on Quay")](https://quay.io/repository/draft/k8s-cassandra)
+
 ##### Steps:
 * Build docker image via Quay.io
 * Create kuberbetes pods & service
